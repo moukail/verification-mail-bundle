@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Moukail\VerificationMailBundle\Controller\VerificationMailController" alias="moukail_verification_mail.verification_mail_controller" />
+        <service id="moukail_verification_mail.verification_mail_controller" class="Moukail\VerificationMailBundle\Controller\VerificationMailController" public="true" autowire="true">
+            <argument type="service" id="moukail_verification_mail.verification_mail_helper"/>
+            <argument />
+            <argument />
+            <argument />
+            <argument />
+        </service>
+        
+        <service id="Moukail\VerificationMailBundle\MessageHandler\VerificationMailHandler" alias="moukail_verification_mail.verification_mail_handler" />
+        <service id="moukail_verification_mail.verification_mail_handler" class="Moukail\VerificationMailBundle\MessageHandler\VerificationMailHandler" public="true" autowire="true">
+            <argument />
+            <argument />
+            <argument type="string" />
+            <argument type="string" />
+            <tag name="messenger.message_handler"
+                 handles="Moukail\VerificationMailBundle\Message\VerificationMail"/>
+        </service>
+
+        <service id="moukail_verification_mail.random_generator" class="Moukail\CommonToken\Generator\RandomGenerator" public="true" />
+        <service id="moukail_verification_mail.token_generator" class="Moukail\CommonToken\Generator\TokenGenerator" public="true" autowire="true">
+            <argument>%kernel.secret%</argument>
+            <argument type="service" id="moukail_verification_mail.random_generator" />
+        </service>
+
+        <service id="Moukail\VerificationMailBundle\Repository\TokenRepository" alias="moukail_verification_mail.token_repository" />
+        <service id="moukail_verification_mail.token_repository" class="Moukail\VerificationMailBundle\Repository\TokenRepository" autowire="true">
+            <argument type="service" id="doctrine"/>
+            <tag name="doctrine.repository_service"
+                 handles="Moukail\VerificationMailBundle\Repository\TokenRepository"/>
+        </service>
+
+        <service id="moukail_verification_mail.cleaner" class="Moukail\CommonToken\Cleaner" public="true">
+            <argument type="service" id="moukail_verification_mail.token_repository"/>
+            <argument /> <!-- reset password request enable_garbage_collection -->
+        </service>
+
+        <service id="Moukail\VerificationMailBundle\Helper" alias="moukail_verification_mail.verification_helper"/>
+        <service id="moukail_verification_mail.verification_helper" class="Moukail\VerificationMailBundle\Helper" public="true" autowire="true">
+            <argument type="service" id="moukail_verification_mail.token_generator"/>
+            <argument type="service" id="moukail_verification_mail.cleaner" />
+            <argument type="service" id="moukail_verification_mail.token_repository"/>
+            <argument>86400</argument> <!-- reset password request lifetime -->
+            <argument>100</argument> <!-- reset password throttle limit -->
+        </service>
+
+    </services>
+</container>

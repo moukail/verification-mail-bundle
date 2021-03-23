@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Moukail\VerificationMailBundle\Entity\Token" table="email_verification_tokens" repository-class="Moukail\VerificationMailBundle\Repository\TokenRepository">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+        <many-to-one field="user" target-entity="Symfony\Component\Security\Core\User\UserInterface">
+            <join-column name="user_id" referenced-column-name="id" />
+        </many-to-one>
+        <field name="token"         column="token"          type="string"   length="50"     unique="true" />
+        <field name="createdAt"     column="created_at"     type="datetime_immutable" />
+        <field name="expiresAt"     column="expires_at"     type="datetime_immutable" />
+    </entity>
+</doctrine-mapping>
