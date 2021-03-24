@@ -9,6 +9,12 @@
   "license" : [
     "MIT"
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://moukail@bitbucket.org/dmrdevelopers/common-token"
+    }
+  ],
   "require" : {
     "php": "^7.4|^8.0",
     "symfony/framework-bundle": "^4.0|^5.0",
@@ -23,7 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Moukail\\VerificationMailBundle\\": ""
+      "Moukail\\VerificationMailBundle\\": "src/"
     }
   },
   "extra" : {
