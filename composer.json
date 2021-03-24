@@ -12,13 +12,13 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://bitbucket.org/dmrdevelopers/common-token.git"
+      "url": "https://github.com/moukail/common-token"
     }
   ],
   "require" : {
     "php": "^7.4|^8.0",
     "symfony/framework-bundle": "^4.0|^5.0",
-    "moukail/common-token": "dev-master"
+    "moukail/common-token": "^1.0"
   },
   "require-dev": {
     "doctrine/doctrine-bundle": "~1.4|~2.0",
