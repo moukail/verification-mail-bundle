@@ -12,7 +12,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://moukail@bitbucket.org/dmrdevelopers/common-token"
+      "url": "https://bitbucket.org/dmrdevelopers/common-token.git"
     }
   ],
   "require" : {
