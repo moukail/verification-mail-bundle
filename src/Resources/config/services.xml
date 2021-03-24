@@ -40,8 +40,8 @@
             <argument /> <!-- reset password request enable_garbage_collection -->
         </service>
 
-        <service id="Moukail\VerificationMailBundle\Helper" alias="moukail_verification_mail.verification_helper"/>
-        <service id="moukail_verification_mail.verification_helper" class="Moukail\VerificationMailBundle\Helper" public="true" autowire="true">
+        <service id="Moukail\VerificationMailBundle\Helper" alias="moukail_verification_mail.verification_mail_helper"/>
+        <service id="moukail_verification_mail.verification_mail_helper" class="Moukail\VerificationMailBundle\Helper" public="true" autowire="true">
             <argument type="service" id="moukail_verification_mail.token_generator"/>
             <argument type="service" id="moukail_verification_mail.cleaner" />
             <argument type="service" id="moukail_verification_mail.token_repository"/>
