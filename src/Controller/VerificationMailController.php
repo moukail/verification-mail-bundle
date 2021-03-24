@@ -8,7 +8,7 @@ use Moukail\CommonToken\Exception\ExceptionInterface;
 use Moukail\CommonToken\HelperInterface;
 
 use Moukail\CommonToken\Repository\UserRepositoryInterface;
-use Moukail\VerificationMailBundle\Message\EmailVerificationMail;
+use Moukail\VerificationMailBundle\Message\VerificationMail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -52,7 +52,7 @@ class VerificationMailController extends AbstractController
             ], Response::HTTP_OK);
         }
 
-        $this->bus->dispatch(new EmailVerificationMail($tokenEntity->getUser()->getEmail(), [
+        $this->bus->dispatch(new VerificationMail($tokenEntity->getUser()->getEmail(), [
             'name' => $tokenEntity->getUser()->getLastName(),
             'frontend_url' => $this->params->get('moukail_verification_mail.email_base_url'),
             'token' => $tokenEntity->getToken(),
