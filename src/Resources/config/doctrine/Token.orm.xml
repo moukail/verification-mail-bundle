@@ -5,7 +5,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Moukail\VerificationMailBundle\Entity\Token" table="email_verification_tokens" repository-class="Moukail\VerificationMailBundle\Repository\TokenRepository">
+    <entity name="Moukail\VerificationMailBundle\Entity\Token" table="verification_mail_tokens" repository-class="Moukail\VerificationMailBundle\Repository\TokenRepository">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
