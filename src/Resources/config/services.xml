@@ -5,10 +5,10 @@
     <services>
         <service id="Moukail\VerificationMailBundle\Controller\VerificationMailController" alias="moukail_verification_mail.verification_mail_controller" />
         <service id="moukail_verification_mail.verification_mail_controller" class="Moukail\VerificationMailBundle\Controller\VerificationMailController" public="true" autowire="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
             <argument type="service" id="moukail_verification_mail.verification_mail_helper"/>
-            <argument />
-            <argument />
-            <argument />
             <argument />
         </service>
         
