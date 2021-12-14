@@ -10,9 +10,9 @@
     "MIT"
   ],
   "require" : {
-    "php": "^7.4|^8.0",
-    "symfony/framework-bundle": "^4.0|^5.0",
-    "symfony/security-core": "^4.0|^5.0",
+    "php": "^8.0",
+    "symfony/framework-bundle": "^5.0|^6.0",
+    "symfony/security-core": "^5.0|^6.0",
     "moukail/common-token": "1.0.*"
   },
   "require-dev": {
