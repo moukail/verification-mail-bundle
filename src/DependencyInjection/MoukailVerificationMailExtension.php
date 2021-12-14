@@ -34,7 +34,7 @@ class MoukailVerificationMailExtension extends Extension
 
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
         return 'moukail_verification_mail';
     }
